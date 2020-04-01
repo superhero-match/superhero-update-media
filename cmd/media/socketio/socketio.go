@@ -18,6 +18,7 @@ import (
 	b64 "encoding/base64"
 	"fmt"
 	"github.com/google/uuid"
+	"github.com/superhero-match/superhero-update-media/cmd/media/socketio/model"
 	"log"
 	"strings"
 	"time"
@@ -106,9 +107,10 @@ func (socket *SocketIO) NewSocketIOServer() (*socketio.Server, error) {
 			log.Println(err)
 		}
 
-		log.Println("Main Profile Pic URL:")
-		log.Println(url)
-		c.Emit("updateProfilePictureURL", url, position)
+		c.Emit("updateProfilePictureURL", model.Response{
+			URL:      url,
+			Position: position,
+		}, )
 	})
 
 	server.OnDisconnect("/", func(c socketio.Conn, reason string) {

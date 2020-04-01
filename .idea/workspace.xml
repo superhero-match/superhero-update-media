@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9e807c1c-c241-4aaa-a17a-49db6d206a7a" name="Default Changelist" comment="" />
+    <list default="true" id="9e807c1c-c241-4aaa-a17a-49db6d206a7a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/media/socketio/socketio.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/media/socketio/socketio.go" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,7 +18,11 @@
     </option>
   </component>
   <component name="GOROOT" path="C:\Go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1ZWj9fTVlSMXnD7ydyChsA43ELV" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -36,6 +43,11 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ACER\go\src\github.com\superhero-match\superhero-update-media\cmd\media\socketio\model" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="go build github.com/superhero-match/superhero-update-media/cmd/media" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
@@ -60,21 +72,21 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="275" y="23" key="#Go_Modules_(vgo)/0.0.1366.728@0.0.1366.728" timestamp="1584961826635" />
-    <state width="1323" height="158" key="GridCell.Tab.0.bottom" timestamp="1584970442190">
+    <state width="1323" height="349" key="GridCell.Tab.0.bottom" timestamp="1585744585217">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="158" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1584970442190" />
-    <state width="1323" height="158" key="GridCell.Tab.0.center" timestamp="1584970442190">
+    <state width="1323" height="349" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1585744585217" />
+    <state width="1323" height="349" key="GridCell.Tab.0.center" timestamp="1585744585216">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="158" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1584970442190" />
-    <state width="1323" height="158" key="GridCell.Tab.0.left" timestamp="1584970442189">
+    <state width="1323" height="349" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1585744585216" />
+    <state width="1323" height="349" key="GridCell.Tab.0.left" timestamp="1585744585216">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="158" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1584970442189" />
-    <state width="1323" height="158" key="GridCell.Tab.0.right" timestamp="1584970442190">
+    <state width="1323" height="349" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1585744585216" />
+    <state width="1323" height="349" key="GridCell.Tab.0.right" timestamp="1585744585216">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="158" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1584970442190" />
+    <state width="1323" height="349" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1585744585216" />
   </component>
 </project>
