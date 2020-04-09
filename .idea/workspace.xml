@@ -3,7 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="9e807c1c-c241-4aaa-a17a-49db6d206a7a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmd/media/socketio/socketio.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/media/socketio/socketio.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/media/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/media/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/config/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/config/config.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/producer/update.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/producer/update.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +27,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1ZWj9fTVlSMXnD7ydyChsA43ELV" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -49,7 +56,16 @@
       <recent name="C:\Users\ACER\go\src\github.com\superhero-match\superhero-update-media\cmd\media\socketio\model" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Go Build.go build github.com/superhero-match/superhero-update-media/cmd/health">
+    <configuration name="go build github.com/superhero-match/superhero-update-media/cmd/health" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="superhero-update-media" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/cmd/health/main.go" />
+      <package value="github.com/superhero-match/superhero-update-media/cmd/health" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
     <configuration name="go build github.com/superhero-match/superhero-update-media/cmd/media" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="superhero-update-media" />
       <working_directory value="$PROJECT_DIR$/" />
@@ -60,6 +76,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build github.com/superhero-match/superhero-update-media/cmd/health" />
         <item itemvalue="Go Build.go build github.com/superhero-match/superhero-update-media/cmd/media" />
       </list>
     </recent_temporary>
@@ -72,21 +89,21 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="275" y="23" key="#Go_Modules_(vgo)/0.0.1366.728@0.0.1366.728" timestamp="1584961826635" />
-    <state width="1323" height="349" key="GridCell.Tab.0.bottom" timestamp="1585744585217">
+    <state width="1323" height="349" key="GridCell.Tab.0.bottom" timestamp="1586438783006">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="349" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1585744585217" />
-    <state width="1323" height="349" key="GridCell.Tab.0.center" timestamp="1585744585216">
+    <state width="1323" height="349" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1586438783006" />
+    <state width="1323" height="349" key="GridCell.Tab.0.center" timestamp="1586438783005">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="349" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1585744585216" />
-    <state width="1323" height="349" key="GridCell.Tab.0.left" timestamp="1585744585216">
+    <state width="1323" height="349" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1586438783005" />
+    <state width="1323" height="349" key="GridCell.Tab.0.left" timestamp="1586438783005">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="349" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1585744585216" />
-    <state width="1323" height="349" key="GridCell.Tab.0.right" timestamp="1585744585216">
+    <state width="1323" height="349" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1586438783005" />
+    <state width="1323" height="349" key="GridCell.Tab.0.right" timestamp="1586438783006">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="349" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1585744585216" />
+    <state width="1323" height="349" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1586438783006" />
   </component>
 </project>

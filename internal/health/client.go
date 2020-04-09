@@ -11,36 +11,38 @@
   You should have received a copy of the GNU General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-package producer
+package health
 
 import (
-	"bytes"
-	"context"
-	"encoding/json"
-
-	"github.com/segmentio/kafka-go"
-
-	"github.com/superhero-match/superhero-update-media/internal/producer/model"
+	"fmt"
+	"github.com/superhero-match/superhero-update-media/internal/config"
+	"log"
+	"net"
 )
 
-// UpdateProfilePicture publishes update for a Superhero profile picture on Kafka topic for it to be
-// consumed by consumer and updated in DB and Elasticsearch.
-func(p *Producer) UpdateProfilePicture(pp model.ProfilePicture) error {
-	var sb bytes.Buffer
+// Client holds health client related data.
+type Client struct {
+	HealthServerURL string
+	ContentType     string
+}
 
-	err := json.NewEncoder(&sb).Encode(pp)
-	if err != nil {
-		return err
+// NewClient return new health client.
+func NewClient(cfg *config.Config) *Client {
+	return &Client{
+		HealthServerURL: fmt.Sprintf("http://%s%s%s", getIPAddress(), cfg.Health.Port, cfg.Health.ShutdownEndpoint),
+		ContentType:     cfg.Health.ContentType,
 	}
+}
 
-	err = p.Producer.WriteMessages(context.Background(),
-		kafka.Message{
-			Value: sb.Bytes(),
-		},
-	)
+// Get preferred outbound ip of this machine.
+func getIPAddress() string {
+	conn, err := net.Dial("udp", "8.8.8.8:80")
 	if err != nil {
-		return err
+		log.Fatal(err)
 	}
+	defer conn.Close()
 
-	return nil
+	localAddr := conn.LocalAddr().(*net.UDPAddr)
+
+	return localAddr.IP.String()
 }

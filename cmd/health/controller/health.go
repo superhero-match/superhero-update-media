@@ -11,36 +11,14 @@
   You should have received a copy of the GNU General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-package producer
+package controller
 
 import (
-	"bytes"
-	"context"
-	"encoding/json"
-
-	"github.com/segmentio/kafka-go"
-
-	"github.com/superhero-match/superhero-update-media/internal/producer/model"
+	"github.com/gin-gonic/gin"
+	"net/http"
 )
 
-// UpdateProfilePicture publishes update for a Superhero profile picture on Kafka topic for it to be
-// consumed by consumer and updated in DB and Elasticsearch.
-func(p *Producer) UpdateProfilePicture(pp model.ProfilePicture) error {
-	var sb bytes.Buffer
-
-	err := json.NewEncoder(&sb).Encode(pp)
-	if err != nil {
-		return err
-	}
-
-	err = p.Producer.WriteMessages(context.Background(),
-		kafka.Message{
-			Value: sb.Bytes(),
-		},
-	)
-	if err != nil {
-		return err
-	}
-
-	return nil
+// Health is used for health checks from loadbalancer.
+func (ctl *Controller) Health(c *gin.Context) {
+	c.Status(http.StatusOK)
 }

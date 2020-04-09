@@ -11,36 +11,11 @@
   You should have received a copy of the GNU General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-package producer
+package config
 
-import (
-	"bytes"
-	"context"
-	"encoding/json"
-
-	"github.com/segmentio/kafka-go"
-
-	"github.com/superhero-match/superhero-update-media/internal/producer/model"
-)
-
-// UpdateProfilePicture publishes update for a Superhero profile picture on Kafka topic for it to be
-// consumed by consumer and updated in DB and Elasticsearch.
-func(p *Producer) UpdateProfilePicture(pp model.ProfilePicture) error {
-	var sb bytes.Buffer
-
-	err := json.NewEncoder(&sb).Encode(pp)
-	if err != nil {
-		return err
-	}
-
-	err = p.Producer.WriteMessages(context.Background(),
-		kafka.Message{
-			Value: sb.Bytes(),
-		},
-	)
-	if err != nil {
-		return err
-	}
-
-	return nil
+// Health holds configuration for health server.
+type Health struct {
+	Port             string `env:"HEALTH_SERVER_PORT" default:":8260"`
+	ShutdownEndpoint string `env:"HEALTH_SERVER_SHUTDOWN_ENDPOINT" default:"/api/v1/superhero_update_media_health/shutdown"`
+	ContentType      string `env:"HEALTH_SERVER_CONTENT_TYPE" default:"application/json"`
 }

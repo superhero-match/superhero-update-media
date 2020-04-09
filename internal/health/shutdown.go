@@ -11,33 +11,16 @@
   You should have received a copy of the GNU General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-package producer
+package health
 
 import (
-	"bytes"
-	"context"
-	"encoding/json"
-
-	"github.com/segmentio/kafka-go"
-
-	"github.com/superhero-match/superhero-update-media/internal/producer/model"
+	"net/http"
 )
 
-// UpdateProfilePicture publishes update for a Superhero profile picture on Kafka topic for it to be
-// consumed by consumer and updated in DB and Elasticsearch.
-func(p *Producer) UpdateProfilePicture(pp model.ProfilePicture) error {
-	var sb bytes.Buffer
-
-	err := json.NewEncoder(&sb).Encode(pp)
-	if err != nil {
-		return err
-	}
-
-	err = p.Producer.WriteMessages(context.Background(),
-		kafka.Message{
-			Value: sb.Bytes(),
-		},
-	)
+// ShutdownHealthServer sends shutdown signal to health server. This shutdown signal is sent only when API server
+// is panicking and is about to be shutdown to notify loadbalancer that API is un-healthy.
+func (c *Client) ShutdownHealthServer () error {
+	_, err := http.Post(c.HealthServerURL, c.ContentType, nil)
 	if err != nil {
 		return err
 	}

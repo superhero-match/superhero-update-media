@@ -13,7 +13,7 @@ dkb:
 	docker build -t superhero-update-media .
 
 dkr:
-	docker run --rm -p "7100:7100" superhero-update-media
+	docker run --rm -p "7100:7100" -p "8260:8260" superhero-update-media
 
 launch: dkb dkr
 

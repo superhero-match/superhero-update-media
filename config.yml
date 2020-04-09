@@ -17,3 +17,8 @@ producer:
   topic: 'update.municipality.profilepicture'
   batch_size: 1
   batch_timeout: 10
+
+health:
+  port: ':8260'
+  shutdown_endpoint: '/api/v1/superhero_update_media_health/shutdown'
+  content_type: 'application/json'

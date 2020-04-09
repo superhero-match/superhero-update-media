@@ -22,6 +22,7 @@ type Config struct {
 	App      *App
 	Aws      *Aws
 	Producer *Producer
+	Health   *Health
 }
 
 // NewConfig returns the configuration.

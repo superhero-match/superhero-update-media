@@ -19,6 +19,12 @@ RUN go mod download
 # Build the Go app.
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -ldflags '-extldflags "-static"' -o main
 
+# Set build as working directory.
+WORKDIR /build/cmd/health
+
+# Build the Go app.
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -ldflags '-extldflags "-static"' -o health
+
 # Create unprivelleged user.
 RUN adduser --disabled-login appuser
 
@@ -36,6 +42,16 @@ RUN mkdir app
 # Copy the pre-built binary file from the previous stage.
 COPY --from=builder /build/cmd/media/main /app/
 
+# Copy the pre-built binary file from the previous stage.
+COPY --from=builder /build/cmd/health/health /app/
+
+# Copy the config file from the previous stage.
+COPY ./config.yml /app/
+
+# Copy the certificates from the previous stage.
+COPY ./cmd/media/certificate.pem /app/cmd/media/
+COPY ./cmd/media/key.pem /app/cmd/media/
+
 # Set working directory in current stage.
 WORKDIR /app
 
@@ -45,5 +61,8 @@ USER appuser
 # Expose port 7100.
 EXPOSE 7100 7100
 
-# Command to run the executable.
-CMD ["./main"]
+# Expose port 8260.
+EXPOSE 8260 8260
+
+# Command to run the executables.
+CMD ["sh", "-c", "( ./health & ) && ./main"]

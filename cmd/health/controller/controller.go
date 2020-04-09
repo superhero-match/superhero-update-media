@@ -11,36 +11,30 @@
   You should have received a copy of the GNU General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-package producer
+package controller
 
 import (
-	"bytes"
-	"context"
-	"encoding/json"
-
-	"github.com/segmentio/kafka-go"
-
-	"github.com/superhero-match/superhero-update-media/internal/producer/model"
+	"github.com/gin-gonic/gin"
 )
 
-// UpdateProfilePicture publishes update for a Superhero profile picture on Kafka topic for it to be
-// consumed by consumer and updated in DB and Elasticsearch.
-func(p *Producer) UpdateProfilePicture(pp model.ProfilePicture) error {
-	var sb bytes.Buffer
+// Controller holds the Controller data.
+type Controller struct {
+}
 
-	err := json.NewEncoder(&sb).Encode(pp)
-	if err != nil {
-		return err
-	}
+// NewController returns new controller.
+func NewController() (*Controller, error) {
+	return &Controller{}, nil
+}
 
-	err = p.Producer.WriteMessages(context.Background(),
-		kafka.Message{
-			Value: sb.Bytes(),
-		},
-	)
-	if err != nil {
-		return err
-	}
+// RegisterRoutes registers all the superhero_suggestions API routes.
+func (ctl *Controller) RegisterRoutes() *gin.Engine {
+	router := gin.Default()
 
-	return nil
+	sr := router.Group("/api/v1/superhero_update_media_health")
+
+	// Routes.
+	sr.POST("/health", ctl.Health)
+	sr.POST("/shutdown", ctl.Shutdown)
+
+	return router
 }
