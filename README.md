@@ -2,7 +2,7 @@
 Superhero Match is an open source dating app.
 
 ## superhero-update-media
-This micro-service is responsible for handling updating users profile pictures. 
+This micro-service is responsible for handling updating user profile pictures. 
 
 ## Becoming Contributor
 If you want to become contributor, please send email to this address - `superheromatch@gmail.com`.
