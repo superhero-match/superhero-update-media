@@ -15,7 +15,6 @@ package aws
 
 import (
 	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"
 
 	"github.com/superhero-match/superhero-update-media/internal/config"
@@ -25,11 +24,6 @@ import (
 func NewSession(cfg *config.Config) (*session.Session, error) {
 	s, err := session.NewSession(&aws.Config{
 		Region: aws.String(cfg.Aws.Region),
-		Credentials: credentials.NewStaticCredentials(
-			"",// secret-id
-			"",// secret-key
-			"",
-		),
 	})
 	if err != nil {
 		return nil, err
