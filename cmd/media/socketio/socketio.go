@@ -62,7 +62,7 @@ func (socket *SocketIO) NewSocketIOServer() (*socketio.Server, error) {
 	})
 
 	server.OnEvent("/", "onUpdateProfilePicture", func(c socketio.Conn, superheroID string, picture string, position int64) {
-		log.Println("onUploadMainProfilePicture event raised...")
+		log.Println("onUpdateProfilePicture event raised...")
 
 		buffer, err := b64.StdEncoding.DecodeString(picture)
 		if err != nil {

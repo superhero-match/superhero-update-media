@@ -65,4 +65,4 @@ EXPOSE 7100 7100
 EXPOSE 8260 8260
 
 # Command to run the executables.
-CMD ["sh", "-c", "( ./health & ) && ./main"]
+CMD ["sh", "-c", "./main"]
