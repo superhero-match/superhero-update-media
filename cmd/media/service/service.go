@@ -1,5 +1,5 @@
 /*
-  Copyright (C) 2019 - 2021 MWSOFT
+  Copyright (C) 2019 - 2022 MWSOFT
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation, either version 3 of the License, or
@@ -14,7 +14,6 @@
 package service
 
 import (
-	"github.com/aws/aws-sdk-go/aws/session"
 	"go.uber.org/zap"
 
 	"github.com/superhero-match/superhero-update-media/internal/aws"
@@ -22,22 +21,22 @@ import (
 	"github.com/superhero-match/superhero-update-media/internal/producer"
 )
 
-// Service holds all the different services that are used when handling request.
-type Service struct {
-	Producer            *producer.Producer
-	Session             *session.Session
-	Logger              *zap.Logger
-	TimeFormat          string
-	SuperheroesS3Bucket string
-	CdnURL              string
-	ImageExtension      string
-	ContentType         string
-	ContentEncoding     string
+// Service interface defines service methods.
+type Service interface {
+	PutObject(buffer []byte, key string) error
+	UpdateProfilePicture(superheroID string, url string, position int64, createdAt string) error
+}
+
+// service holds all the different services that are used when handling request.
+type service struct {
+	Producer producer.Producer
+	AWS      aws.AWS
+	Logger   *zap.Logger
 }
 
 // NewService creates value of type Service.
-func NewService(cfg *config.Config) (*Service, error) {
-	s, err := aws.NewSession(cfg)
+func NewService(cfg *config.Config) (Service, error) {
+	a, err := aws.NewAWS(cfg)
 	if err != nil {
 		return nil, err
 	}
@@ -49,15 +48,9 @@ func NewService(cfg *config.Config) (*Service, error) {
 
 	defer logger.Sync()
 
-	return &Service{
-		Producer:            producer.NewProducer(cfg),
-		Session:             s,
-		Logger:              logger,
-		TimeFormat:          cfg.App.TimeFormat,
-		SuperheroesS3Bucket: cfg.Aws.SuperheroesS3Bucket,
-		CdnURL:              cfg.Aws.CdnURL,
-		ImageExtension:      cfg.Aws.ImageExtension,
-		ContentType:         cfg.Aws.ContentType,
-		ContentEncoding:     cfg.Aws.ContentEncoding,
+	return &service{
+		Producer: producer.NewProducer(cfg),
+		AWS:      a,
+		Logger:   logger,
 	}, nil
 }

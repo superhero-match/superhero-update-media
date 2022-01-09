@@ -1,5 +1,5 @@
 /*
-  Copyright (C) 2019 - 2021 MWSOFT
+  Copyright (C) 2019 - 2022 MWSOFT
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation, either version 3 of the License, or
@@ -11,30 +11,9 @@
   You should have received a copy of the GNU General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-package controller
+package service
 
-import (
-	"github.com/gin-gonic/gin"
-)
-
-// Controller holds the Controller data.
-type Controller struct {
-}
-
-// NewController returns new controller.
-func NewController() (*Controller, error) {
-	return &Controller{}, nil
-}
-
-// RegisterRoutes registers all the superhero_suggestions API routes.
-func (ctl *Controller) RegisterRoutes() *gin.Engine {
-	router := gin.Default()
-
-	sr := router.Group("/api/v1/superhero_update_media_health")
-
-	// Routes.
-	sr.POST("/health", ctl.Health)
-	sr.POST("/shutdown", ctl.Shutdown)
-
-	return router
+// PutObject adds new object to S3.
+func (srv *service) PutObject(buffer []byte, key string) error {
+	return srv.AWS.PutObject(buffer, key)
 }

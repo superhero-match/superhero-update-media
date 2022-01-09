@@ -1,5 +1,5 @@
 /*
-  Copyright (C) 2019 - 2021 MWSOFT
+  Copyright (C) 2019 - 2022 MWSOFT
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation, either version 3 of the License, or
@@ -19,8 +19,8 @@ import (
 
 // UpdateProfilePicture publishes update for a Superhero profile picture on Kafka topic for it to be
 // consumed by consumer and updated in DB and Elasticsearch.
-func (s *Service) UpdateProfilePicture(superheroID string, url string, position int64, createdAt string) error {
-	if err := s.Producer.UpdateProfilePicture(
+func (srv *service) UpdateProfilePicture(superheroID string, url string, position int64, createdAt string) error {
+	if err := srv.Producer.UpdateProfilePicture(
 		mapper.MapToProducerProfilePicture(
 			superheroID,
 			url,
