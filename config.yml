@@ -11,7 +11,7 @@ aws:
   content_encoding: 'base64'
 
 producer:
-  brokers: '192.168.1.229:9092'
+  brokers: 'localhost:9092'
   topic: 'update.municipality.profilepicture'
   batch_size: 1
   batch_timeout: 10

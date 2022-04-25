@@ -11,11 +11,10 @@
   You should have received a copy of the GNU General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
+
 package service
 
 import (
-	"go.uber.org/zap"
-
 	"github.com/superhero-match/superhero-update-media/internal/aws"
 	"github.com/superhero-match/superhero-update-media/internal/config"
 	"github.com/superhero-match/superhero-update-media/internal/producer"
@@ -31,26 +30,17 @@ type Service interface {
 type service struct {
 	Producer producer.Producer
 	AWS      aws.AWS
-	Logger   *zap.Logger
 }
 
 // NewService creates value of type Service.
 func NewService(cfg *config.Config) (Service, error) {
-	a, err := aws.NewAWS(cfg)
+	a, err := aws.New(cfg)
 	if err != nil {
 		return nil, err
 	}
-
-	logger, err := zap.NewProduction()
-	if err != nil {
-		return nil, err
-	}
-
-	defer logger.Sync()
 
 	return &service{
-		Producer: producer.NewProducer(cfg),
+		Producer: producer.New(cfg),
 		AWS:      a,
-		Logger:   logger,
 	}, nil
 }

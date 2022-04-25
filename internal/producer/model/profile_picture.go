@@ -11,7 +11,17 @@
   You should have received a copy of the GNU General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
+
 package model
+
+import "fmt"
+
+var (
+	ErrInvalidPosition    = fmt.Errorf("the position of the profile picture is invalid")
+	ErrURLIsEmpty         = fmt.Errorf("profile picture url is empty")
+	ErrSuperheroIDIsEmpty = fmt.Errorf("profile picture superhero id is empty")
+	ErrCreatedAtIsEmpty   = fmt.Errorf("profile picture createdAt id is empty")
+)
 
 // ProfilePicture holds profile picture data.
 type ProfilePicture struct {
@@ -19,4 +29,25 @@ type ProfilePicture struct {
 	URL         string `json:"url"`
 	Position    int64  `json:"position"`
 	CreatedAt   string `json:"createdAt"`
+}
+
+// Validate validates ProfilePicture data.
+func (pp ProfilePicture) Validate() error {
+	if pp.Position < 0 {
+		return ErrInvalidPosition
+	}
+
+	if len(pp.URL) == 0 {
+		return ErrURLIsEmpty
+	}
+
+	if len(pp.SuperheroID) == 0 {
+		return ErrSuperheroIDIsEmpty
+	}
+
+	if len(pp.CreatedAt) == 0 {
+		return ErrCreatedAtIsEmpty
+	}
+
+	return nil
 }

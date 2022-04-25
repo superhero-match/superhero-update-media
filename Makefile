@@ -9,11 +9,15 @@ build:
 	CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -ldflags '-extldflags "-static"' -o bin/main cmd/chat/main.go
 	chmod +x bin/main
 
+tests:
+	go test ./... -v -coverpkg=./... -coverprofile=profile.cov ./...
+	go tool cover -func profile.cov
+
 dkb:
 	docker build -t superhero-update-media .
 
 dkr:
-	docker run --rm -p "7100:7100" -p "8260:8260" superhero-update-media
+	docker run --rm -p "7100:7100" superhero-update-media
 
 launch: dkb dkr
 
@@ -31,4 +35,4 @@ clear: rmc rmi
 update-media-ssh:
 	docker exec -it superhero-update-media /bin/bash
 
-PHONY: prepare build dkb dkr launch update-media-log update-media-ssh rmc rmi clear
+PHONY: prepare build tests dkb dkr launch update-media-log update-media-ssh rmc rmi clear
